@@ -1,0 +1,20 @@
+<span class="fullVersionHistory">
+    <ul class="fullVersionInfo">
+        {%- assign validVerInfo = site.data.product_version.version_info_list -%}
+        {%- for verInfo in validVerInfo -%}
+            {%- assign curVerText = "" -%}
+            {%- assign verInfo = verInfo | downcase | strip -%}
+            {%- if verInfo == "latest version"-%}
+                {%- assign curVerText = verInfo | capitalize -%}
+            {%- else -%}
+                {%- assign curVerText = "Version " | append: verInfo -%}
+            {%- endif -%}
+            {%- if site.firstLevelUrl == "/barcode-reader" -%}
+            <li onclick="changeVersion(this)" class="dbr_changeVersion_li">{{ curVerText }}</li>
+            {%- else -%}
+            <li onclick="changeVersion(this)">{{ curVerText }}</li>
+            {%- endif -%}
+        {%- endfor -%}
+    </ul>
+    <a class="fvChange fontOswald" href="javascript:;">Change +</a>
+</span>
